@@ -9,3 +9,5 @@ export default pinia
 
 import { useUserStore } from './modules/user'
 export { useUserStore }
+// 或者导出=>按需导入导出
+// export * from './modules/user'
