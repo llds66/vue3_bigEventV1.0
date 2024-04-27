@@ -1,35 +1,21 @@
-# bigevent
+## heima-vue3大事件项目
 
-This template should help get you started developing with Vue 3 in Vite.
+**在线演示：**https://fe-bigevent-web.itheima.net/login
 
-## Recommended IDE Setup
+**接口文档:**   https://apifox.com/apidoc/shared-26c67aee-0233-4d23-aab7-08448fdf95ff/api-93850835
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+**本项目技术栈**：
 
-## Customize configuration
++ [vue3](https://cn.vuejs.org/index.html)
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
++ [element-plus](https://element-plus.org/)
 
-## Project Setup
++ [pinia](https://pinia.web3doc.top/)
 
-```sh
-pnpm install
-```
++ [vue-router](https://router.vuejs.org/) 
 
-### Compile and Hot-Reload for Development
++ [vite](https://www.vitejs.net/) 
 
-```sh
-pnpm dev
-```
++ [axios](https://axios-http.com/) 
 
-### Compile and Minify for Production
-
-```sh
-pnpm build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-pnpm lint
-```
++ [ES6](http://es6.ruanyifeng.com/)
