@@ -13,12 +13,15 @@ export const useUserStore = defineStore(
     }
     // 用户
     const user = ref({})
-    const getUer = async () => {
+    const getUser = async () => {
       const res = await userGetInfoService()
       user.value = res.data.data
     }
+    const setUser = () => {
+      user.value = ''
+    }
 
-    return { token, setToken, removeToken, user, getUer }
+    return { token, setToken, removeToken, user, getUser, setUser }
   },
   { persist: true }
 )

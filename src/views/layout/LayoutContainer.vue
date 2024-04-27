@@ -13,12 +13,29 @@ import avatar from '@/assets/default.png'
 import { onMounted } from 'vue'
 // 从pinia中获取用户信息
 import { useUserStore } from '@/stores/index'
+import router from '@/router'
 const userStore = useUserStore()
 
 onMounted(() => {
-  userStore.getUer()
+  userStore.getUser()
 })
 // console.log(userStore.user)
+
+//下拉菜单事件
+const onCommand = async (command) => {
+  if (command === 'logout') {
+    await ElMessageBox.confirm('确认退出吗？', '温馨提示', {
+      type: 'warning',
+      confirmButtonText: '确认',
+      cancelButtonText: '取消'
+    })
+    userStore.removeToken()
+    userStore.setUser({})
+    router.push('/login')
+  } else {
+    router.push(`/user/${command}`)
+  }
+}
 </script>
 
 <template>
@@ -70,7 +87,7 @@ onMounted(() => {
             >{{ userStore.user.id }}{{ userStore.user.username }}</strong
           >
         </div>
-        <el-dropdown placement="bottom-end">
+        <el-dropdown placement="bottom-end" @command="onCommand">
           <span class="el-dropdown__box">
             <el-avatar :src="userStore.user.user_pic || avatar" />
             <el-icon><CaretBottom /></el-icon>
