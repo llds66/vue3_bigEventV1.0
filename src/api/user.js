@@ -15,3 +15,10 @@ export const userLoginService = ({ username, password }) => {
 }
 // 不加return,不加大括号
 // export const userLoginService = ({ username, password }) => request.post('/api/login', { username, password })
+
+/**
+ * 用户信息
+ */
+export const userGetInfoService = () => {
+  return request.get('/my/userinfo')
+}

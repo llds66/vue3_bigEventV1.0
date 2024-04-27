@@ -10,6 +10,15 @@ import {
   CaretBottom
 } from '@element-plus/icons-vue'
 import avatar from '@/assets/default.png'
+import { onMounted } from 'vue'
+// 从pinia中获取用户信息
+import { useUserStore } from '@/stores/index'
+const userStore = useUserStore()
+
+onMounted(() => {
+  userStore.getUer()
+})
+// console.log(userStore.user)
 </script>
 
 <template>
@@ -56,10 +65,14 @@ import avatar from '@/assets/default.png'
     <el-container>
       <!-- 顶栏 -->
       <el-header>
-        <div>黑马程序员：<strong>llds</strong></div>
+        <div>
+          黑马程序员：<strong
+            >{{ userStore.user.id }}{{ userStore.user.username }}</strong
+          >
+        </div>
         <el-dropdown placement="bottom-end">
           <span class="el-dropdown__box">
-            <el-avatar :src="avatar" />
+            <el-avatar :src="userStore.user.user_pic || avatar" />
             <el-icon><CaretBottom /></el-icon>
           </span>
           <template #dropdown>
