@@ -59,7 +59,7 @@ const onSubmit = async () => {
 </script>
 
 <template>
-  <!-- 封装弹层组件 标题基于是否有id-->
+  <!-- 【文章分类】封装弹层组件 标题基于是否有id-->
   <el-dialog
     v-model="dialogVisible"
     :title="formModel.id ? '编辑分类' : '添加分类'"

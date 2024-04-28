@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import { Edit, Delete } from '@element-plus/icons-vue'
 // loading效果，通过自定义指令v-loading绑定到table组件上
 const loading = ref(false)
 /**
@@ -61,24 +62,24 @@ const onSuccess = () => {
       <el-table-column label="序号" width="100" type="index"> </el-table-column>
       <el-table-column label="分类名称" prop="cate_name"></el-table-column>
       <el-table-column label="分类别名" prop="cate_alias"></el-table-column>
-      <el-table-column label="操作" width="300">
+      <el-table-column label="操作" width="200">
         <!-- 每行的操作按钮，插槽传值 -->
         <!-- { row }是一个对象解构表达式，当前行数据作为一个对象传递给插槽的内容 -->
         <template #default="{ row }">
           <el-button
             :icon="Edit"
             plain
+            circle
             type="primary"
             @click="onEditChannel(row)"
-            >编辑分类</el-button
-          >
+          ></el-button>
           <el-button
             :icon="Delete"
             plain
+            circle
             type="danger"
             @click="onDelChannel(row)"
-            >删除分类</el-button
-          >
+          ></el-button>
         </template>
       </el-table-column>
       <template #empty>
