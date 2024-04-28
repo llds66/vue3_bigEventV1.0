@@ -23,7 +23,7 @@ const getChannelList = async () => {
 getChannelList()
 </script>
 <template>
-  <!-- :modelValue="modelValue" 是一个 Vue.js 的 prop 绑定
+  <!-- (*****):modelValue="modelValue" 是一个 Vue.js 的 prop 绑定
   update:modelValue="emit('update:modelValue', $event)" 是一个事件监听器，
   它监听 el-select 组件的 update:modelValue 事件。当这个事件发生时（用户选择了一个选项），
   它会调用 emit 函数，触发子组件自身的 update:modelValue 事件，并传递选中的值（$event）给父组件。

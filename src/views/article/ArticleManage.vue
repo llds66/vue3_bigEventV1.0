@@ -27,6 +27,18 @@ const getArticleList = async () => {
   loading.value = false
 }
 getArticleList()
+// 搜索(*****)
+const onSearch = () => {
+  params.value.pagenum = 1
+  getArticleList()
+}
+// 重置(*****)
+const onReset = () => {
+  params.value.pagenum = 1
+  params.value.cate_id = ''
+  params.value.state = ''
+  getArticleList()
+}
 
 // 编辑按钮
 const onEditArticle = (row) => {
@@ -68,8 +80,8 @@ const onCurrentChange = (page) => {
         </el-select>
       </el-form-item>
       <el-form-item style="padding-left: 100px">
-        <el-button type="primary">搜索</el-button>
-        <el-button>重置</el-button>
+        <el-button type="primary" @click="onSearch">搜索</el-button>
+        <el-button @click="onReset">重置</el-button>
       </el-form-item>
     </el-form>
     <!-- 表格数据 -->
