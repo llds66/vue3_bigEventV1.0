@@ -1,6 +1,5 @@
 <script setup>
 // 获取文章分类数据
-// import artGetChannelsService from '@/api/article.js'
 import { ref } from 'vue'
 import { artGetChannelsService } from '@/api/article'
 
@@ -8,6 +7,9 @@ import { artGetChannelsService } from '@/api/article'
 defineProps({
   modelValue: {
     type: [Number, String]
+  },
+  width: {
+    type: String
   }
 })
 // defineEmits 是用于定义组件可以触发的自定义事件
@@ -38,6 +40,7 @@ getChannelList()
       :key="item.id"
       :label="item.cate_name"
       :value="item.id"
+      :style="{ width }"
     ></el-option>
   </el-select>
 </template>

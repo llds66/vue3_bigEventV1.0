@@ -3,6 +3,9 @@ import { Delete, Edit } from '@element-plus/icons-vue'
 import { ref } from 'vue'
 import { formatTime } from '@/utils/format'
 import ChannelSelect from './components/ChannelSelect.vue'
+import ArticleEdit from './components/ArticleEdit.vue'
+const articleEditRef = ref() //
+
 // loading效果
 const loading = ref(false)
 
@@ -40,9 +43,13 @@ const onReset = () => {
   getArticleList()
 }
 
+// 添加文章
+const onAddArticle = () => {
+  articleEditRef.value.open({})
+}
 // 编辑按钮
 const onEditArticle = (row) => {
-  console.log(row)
+  articleEditRef.value.open(row)
 }
 
 // 删除按钮
@@ -60,12 +67,14 @@ const onCurrentChange = (page) => {
   params.value.pagenum = page
   getArticleList()
 }
+
+// 抽屉组件
 </script>
 <template>
   <!-- 文章管理页 -->
   <page-container title="文章管理">
     <template #extra>
-      <el-button type="primary">发布文章</el-button>
+      <el-button type="primary" @click="onAddArticle">发布文章</el-button>
     </template>
     <!--  -->
     <el-form inline>
@@ -132,5 +141,7 @@ const onCurrentChange = (page) => {
       @current-change="onCurrentChange"
       style="margin-top: 20px; justify-content: flex-end"
     />
+    <!-- 抽屉组件 -->
+    <article-edit ref="articleEditRef"></article-edit>
   </page-container>
 </template>
