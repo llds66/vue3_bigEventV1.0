@@ -69,6 +69,15 @@ const onCurrentChange = (page) => {
 }
 
 // 抽屉组件
+const onSuccess = (type) => {
+  // 若是添加文章，跳转到最后一页
+  if (type == 'add') {
+    const lastPage = Math.ceil((total.value + 1) / params.value.pagesize)
+    params.value.pagenum = lastPage
+  }
+  // 若是编辑文章，重新渲染该页
+  getArticleList()
+}
 </script>
 <template>
   <!-- 文章管理页 -->
@@ -142,6 +151,6 @@ const onCurrentChange = (page) => {
       style="margin-top: 20px; justify-content: flex-end"
     />
     <!-- 抽屉组件 -->
-    <article-edit ref="articleEditRef"></article-edit>
+    <article-edit ref="articleEditRef" @success="onSuccess"></article-edit>
   </page-container>
 </template>

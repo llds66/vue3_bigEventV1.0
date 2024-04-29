@@ -32,3 +32,9 @@ export const artDelChannelService = (id) => {
 export const artGetListService = (params) => {
   return request.get('/my/article/list', { params })
 }
+/**
+ * 发布文章
+ */
+export const artPublishService = (data) => {
+  return request.post('/my/article/add', data)
+}

@@ -43,6 +43,29 @@ const onUploadFile = (uploadFile) => {
   imgUrl.value = URL.createObjectURL(uploadFile.raw)
   formModel.value.cover_img = uploadFile.raw
 }
+
+// 发布文章
+import { artPublishService } from '@/api/article'
+const emit = defineEmits(['success']) //添加自定义事件，通知父组件更新数据,重新渲染
+const onPublish = async (state) => {
+  // 将已发布还是草稿状态，存入 state
+  formModel.value.state = state
+  // 转换 formData 数据(*****)
+  const fd = new FormData()
+  for (let key in formModel.value) {
+    fd.append(key, formModel.value[key])
+  }
+
+  if (formModel.value.id) {
+    console.log('编辑操作')
+  } else {
+    // 添加请求(*****)
+    await artPublishService(fd)
+    ElMessage.success('添加成功')
+    visibleDrawer.value = false
+    emit('success', 'add') //父组件传参add
+  }
+}
 </script>
 
 <template>
@@ -86,8 +109,8 @@ const onUploadFile = (uploadFile) => {
         </div>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary">发布</el-button>
-        <el-button type="info">草稿</el-button>
+        <el-button type="primary" @click="onPublish('已发布')">发布</el-button>
+        <el-button type="info" @click="onPublish('草稿')">草稿</el-button>
       </el-form-item>
     </el-form>
   </el-drawer>
