@@ -44,3 +44,9 @@ export const artPublishService = (data) => {
 export const artGetDetailService = (id) => {
   return request.get('my/article/info', { params: { id } })
 }
+/**
+ * 编辑文章
+ */
+export const artEditService = (data) => {
+  return request.put('my/article/info', data)
+}

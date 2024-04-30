@@ -82,7 +82,7 @@ const onUploadFile = (uploadFile) => {
 }
 
 // 发布文章
-import { artPublishService } from '@/api/article'
+import { artPublishService, artEditService } from '@/api/article'
 const emit = defineEmits(['success']) //添加自定义事件，通知父组件更新数据,重新渲染
 const onPublish = async (state) => {
   // 将已发布还是草稿状态，存入 state
@@ -94,7 +94,11 @@ const onPublish = async (state) => {
   }
 
   if (formModel.value.id) {
-    console.log('编辑操作')
+    await artEditService(fd)
+    ElMessage.success('编辑成功')
+    visibleDrawer.value = false
+    emit('success', 'edit') //父组件传参edit
+    // console.log('编辑操作')
   } else {
     // 添加请求(*****)
     await artPublishService(fd)
