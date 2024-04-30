@@ -50,3 +50,9 @@ export const artGetDetailService = (id) => {
 export const artEditService = (data) => {
   return request.put('my/article/info', data)
 }
+/**
+ * 删除文章
+ */
+export const artDelService = (id) => {
+  return request.delete('my/article/info', { params: { id } })
+}

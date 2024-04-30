@@ -52,9 +52,17 @@ const onEditArticle = (row) => {
   articleEditRef.value.open(row)
 }
 
-// 删除按钮
-const onDeleteArticle = (row) => {
-  console.log(row)
+// 删除文章按钮
+import { artDelService } from '@/api/article'
+const onDeleteArticle = async (row) => {
+  await ElMessageBox.confirm('你确认删除该文章信息吗？', '温馨提示', {
+    type: 'warning',
+    confirmButtonText: '确认',
+    cancelButtonText: '取消'
+  })
+  await artDelService(row.id)
+  ElMessage({ type: 'success', message: '删除成功' })
+  getArticleList()
 }
 
 // 分页组件业务(*****)
