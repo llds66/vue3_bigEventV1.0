@@ -1,4 +1,5 @@
 <script setup>
+import { nextTick } from 'vue'
 import ChannelSelect from './ChannelSelect.vue'
 import { Plus } from '@element-plus/icons-vue'
 // 富文本插件
@@ -18,16 +19,21 @@ const defaultForm = {
 const formModel = ref({ ...defaultForm })
 import { ref } from 'vue'
 const visibleDrawer = ref(false)
-
+// 表单元素
+const formRef = ref()
+const editorRef = ref()
 // open方法
 const open = async (row) => {
   visibleDrawer.value = true
   formModel.value = row
+  await nextTick()
   // console.log(row)
   if (row.id) {
     console.log('编辑回显')
   } else {
     formModel.value = { ...defaultForm }
+    imgUrl.value = ''
+    editorRef.value.setHTML('') //添加重置
     console.log('添加功能')
   }
 }
@@ -104,6 +110,7 @@ const onPublish = async (state) => {
             theme="snow"
             v-model:content="formModel.content"
             contentType="html"
+            ref="editorRef"
           >
           </quill-editor>
         </div>
