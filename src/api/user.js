@@ -22,3 +22,19 @@ export const userLoginService = ({ username, password }) => {
 export const userGetInfoService = () => {
   return request.get('/my/userinfo')
 }
+/**
+ * 更新用户信息
+ */
+export const userUpdateInfoService = ({ id, nickname, email }) => {
+  return request.put('/my/userinfo', { id, nickname, email })
+}
+/**
+ * 更新用户头像
+ */
+export const userUploadAvatarService = (avatar) => {
+  return request.patch('/my/update/avatar', { avatar })
+}
+// 更新密码
+export const userUpdatePassService = ({ old_pwd, new_pwd, re_pwd }) => {
+  request.patch('/my/updatepwd', { old_pwd, new_pwd, re_pwd })
+}
